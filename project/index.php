@@ -1,30 +1,23 @@
 <?php
 
 session_start();
+if (isset($_SESSION['userId']) && $_SESSION['userId'] != 0) {
+    header("Location: " . $_POST["redirectUrl"]);
+}
+
 include_once 'functions.php';
-createHeader(array("style.css"), array());
+createHeader(array("style.css"), array("http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js#sthash.J5zZTqH1.dpuf", "validate.js"));
 
-?>
-
+echo '
 <div class="main_body">
-	<div class="info">
-		<h1>Need a half-way meeting point?</h1>
-		<p>
-            Treff is a service for creating meeting points for people.<br /><br />
-            Treff will ask for your location and the phone numbers or emails of the people
-            you would like to meet up with. Then it will find a meeting point and automatically
-            send out personalized directions to everyone.
-	    </p>
-	</div>
-
 	<div class="login">
 		<div class="create">
-			<a href="create1.php">Create a Treff</a>
+			<a href="login.php">Make a Journal Entry</a>
 		</div>
 		<div class="join">
-			<a href="search_treff.php">Join a Treff</a>
+			<a href="search_treff.php">Look at Your Past</a>
 		</div>
 	</div> <!--// End of login -->
-</div> <!--// End of main_body -->
+</div><!--// End of main_body -->';
 
-<?php include 'footer.php'; ?>
+include 'footer.php';
