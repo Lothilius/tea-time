@@ -1,7 +1,15 @@
 <?php
 session_start();
 include_once 'functions.php';
-createHeader(array("style.css"), array(getGoogleMapsJSFilePath(), "validate.js"));
+
+$js_script = "require(['dijit/form/Textarea', 'dojo/domReady!'], function(Textarea){
+    var textarea = new Textarea({
+        name: 'description',
+        value: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
+        style: 'width: 300px; height: 100px;'
+    }, 'myarea').startup();
+});";
+createHeader(array("style.css"), array(getGoogleMapsJSFilePath(), "validate.js","//ajax.googleapis.com/ajax/libs/dojo/1.10.3/dojo/dojo.js", $js_script));
 
 
 $connect = connectMySql();
@@ -10,37 +18,45 @@ $result = $connect->query("SELECT * FROM Users WHERE userId=" . $_SESSION["userI
 
 $row = $result->fetch_assoc();
 
+
+
 echo '
 <div class="main_body">
 	<div class="information">
-		<h1>Make a Treff</h1>
-		<form id="treffForm" action="process.php" method="POST" onsubmit="return validateTreff();">
+		<h1>Tell me about your day.</h1>
+		<form id="entry_form" action="process.php" method="POST" onsubmit="return validateTreff();">
 			<table>
-				<tr>
-					<td><input type="text" name="creatorEmail" maxlength="50" value="'. $row["email"] .'" placeholder="Email Address"/></td>
+                <tr>
+					<td><input type="text" name="Title" maxlength="50" placeholder="Journal Title"/></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="treffMateEmail" maxlength="50" placeholder="Treff Mate\'s Email"/></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="street" maxlength="50" size="37" value="'. $row["street"] .'" placeholder="Street Address"/></td>
+					<td><input type="text" name="Subject" maxlength="50" size="37" placeholder="Subject"/></td>
 				</tr>
 				<tr>
 					<td>
-					<input type="text" name="city" maxlength="50" value="'. $row["city"] .'" placeholder="City"/>
-					<input type="text" name="state" maxlength="2" size="3" value="'. $row["state"] .'" placeholder="State"/>
-					<input type="text" name="zip" maxlength="5" size="5" value="'. $row["zip"] .'" placeholder="Zip"/>
-					<input type="hidden" name="country" value="United States" />
-					</td>
+					    Awesome! <input type="radio" name="rating" value="0">
+                    </td>
 				</tr>
-				<tr>
-					<td><input type="text" name="treffName" maxlength="50" placeholder="Treff Name"/></td>
+                <tr>
+					<td>
+                        So so :/ <input type="radio" name="rating" value="1">
+                    </td>
+				</tr>
+                <tr>
+					<td>
+					    Terrible >:( <input type="radio" name="rating" value="2">
+                    </td>
+				</tr>
+                <tr>
+					<td>
+					    <textarea id="myarea" placeholder="...was it a good day?"></textarea>
+					</td>
 				</tr>
 			</table>
         
     </div>
     <div class="createTreff">
-        <input class="createButton" type="submit" value="Create Treff!" name="create" />
+        <input class="createButton" type="submit" value="Log Your Day!" name="create" />
     </div>
 	</form>
 </div> <!-- End of main_body -->';
