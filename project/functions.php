@@ -33,18 +33,19 @@ function createHeader($cssFiles, $javascriptFiles) {
     echo '
     </head>
     <body>
-    <div class="header">
-        <div class="title"><a href="index.php"><img src="images/treff_medium.png" /></a></div>
-        <div class="title_text">Meetings made easy</div>
-    </div>
+<!--//    <div class="header">
+//        <div class="title"><a href="index.php"><img src="images/treff_medium.png" /></a></div>
+//    </div>
+-->
     <nav class="nav_bar">
         <ul class = "navList">
-            <li><a href="description.php">What is Treff?</a></li>';
+            <!-- TODO Include list of compliments -->
+            <li><a href="description.php">Hi Beautiful! How are you?</a></li>';
 
 	if(isset($_SESSION['userId']) && $_SESSION['userId'] != 0){
         echo '<li class="dropBar"><div class="welcomeBar">' . $welcomeMessage . '<img src="images/down_arrow.png" /></div>
             <ul class="dropOut">
-                <li><a href="viewTreffs.php">View Treffs</a></li>
+                <li><a href="view_entries.php">View Journal Entries</a></li>
                 <li>
                     <form action="logout.php" method="POST">
                         <input class="loginButton" type="submit" value="Log Out"  name="logOut"/>
@@ -64,10 +65,10 @@ function createHeader($cssFiles, $javascriptFiles) {
 
 //Please enter MySQL connection HERE.
 function connectMySql(){
-    $host = "192.30.165.140";
-    $user = "db_prod-treff";
+    $host = "Localhost";
+    $user = "db_tea-user";
     $pwd = "6%43z_fDs6fr4";
-    $dbs = "dbotreff";
+    $dbs = "dbotea";
     $port = "3306";
 
     $connect = new mysqli($host, $user, $pwd, $dbs, $port);
