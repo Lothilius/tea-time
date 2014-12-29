@@ -7,38 +7,26 @@ createHeader(array("style.css"), array());
 
     $connection = connectMySql();
 
-    $query = "SELECT m.name, mu.idHash, m.status, DATE_FORMAT(m.lastActivity, '%c-%d-%Y') AS lastActivity, mu.confirmed
-                  FROM MeetingUsers AS mu
-                  INNER JOIN Meetings AS m
-                  ON m.meetingId=mu.meetingId
-                  INNER JOIN Users AS u
-                  ON mu.userId=u.UserId
-                  WHERE u.UserId='" . $_SESSION['userId'] . "'";
-
-    
-
+    $query = "SELECT entry_Id, user_Id, title, subject, rating, description, DATE_FORMAT(datetime, '%c-%d-%Y') AS entry_date
+                  FROM Entries
+                  WHERE user_Id='" . $_SESSION['user_Id'] . "';";
     $result = $connection->query($query);
 
-    echo '
+echo '
     <div class="main_body">
-		<div class="viewTreff"><h2>Your Treff\'s</h2></div>
+		<div class="viewTreff"><h2>Your Journal Entries</h2></div>
         <table class = "viewTreffTable">            
 			<tr>
-				<td class="tdName"><u>Treff Name</u></td><td class="tdCon"><u>Confirmed</u></td><td class="tdStatus"><u>Treff Status</u></td><td class="tdLast"><u>Last Activity</u></td>
+				<td class="tdName"><a>Title</a></td><td class="tdCon"><a>Subject</a></td><td class="tdCon"><a>Rating</a></td><td class="tdStatus"><a>Description</a></td><td class="tdLast"><a>Entry Date</a></td>
 			</tr>';
 
     while ($row = $result->fetch_assoc()) {
-		if($row['confirmed'] == "1"){
-			$confirm = "Yes";
-		}else{
-			$confirm = "No";
-		}
-
         echo '<tr>
-                  <td><a href=" http://project/treff.php?idHash=' . $row['idHash'] . '">' . $row['name'] . '</a></td>
-				  <td>' . $confirm . '</td>
-				  <td>' . $row['status'] . '</td>
-				  <td>' . $row['lastActivity'] . '</td>
+                  <td><a href="treff.php?entry_Id=' . $row['entry_Id'] . '">' . $row['title'] . '</a></td>
+				  <td>' . $row['subject'] . '</td>
+				  <td>' . $row['rating'] . '</td>
+				  <td>' . $row['description'] . '</td>
+				  <td>' . $row['entry_date'] . '</td>
               </tr>';
     }
 	echo '
