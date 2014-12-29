@@ -15,7 +15,7 @@ function createHeader($cssFiles, $javascriptFiles) {
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Treff</title>
+        <title>Tea Time</title>
         <link rel="icon" href="favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />';
 
