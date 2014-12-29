@@ -116,6 +116,25 @@ function getMeetingName($id)
     return $name;
 }
 
+//Return emotional rating
+function get_rating($rating)
+{
+    if($rating == 0)
+    {
+        $emotion = ':)';
+    }
+    elseif($rating == 1)
+    {
+        $emotion = ':|';
+    }
+    elseif($rating == 2)
+    {
+        $emotion = ':(';
+    }
+
+    return $emotion;
+}
+
 //Gets the password of user
 function getPassword($column, $value)
 {
