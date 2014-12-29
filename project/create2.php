@@ -41,7 +41,7 @@ echo '
 				</tr>
                 <tr>
 					<td>
-					    <textarea id="myarea" placeholder="...was it a good day?"></textarea>
+					    <textarea id="myarea"></textarea>
 					</td>
 				</tr>
 			</table>
