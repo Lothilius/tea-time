@@ -38,7 +38,7 @@ function createHeader($cssFiles, $javascriptFiles) {
     <nav class="nav_bar">
         <ul class = "navList">
             <!-- TODO Include list of compliments -->
-            <li><a href="description.php">Hi Beautiful! How are you?</a></li>';
+            <li><a href="index.php">Hi Beautiful! How are you?</a></li>';
 
 	if(isset($_SESSION['user_Id']) && $_SESSION['user_Id'] != 0){
         echo '<li class="dropBar"><div class="welcomeBar">' . $welcomeMessage . '<img src="images/down_arrow.png" /></div>
