@@ -10,10 +10,6 @@ if (isset($_POST["loggedIn"])) {
         include 'login.php';
         exit;
     }
-} else if (isset($_POST["register"])) {
-    addUser();
-} else if (isset($_POST["anonymous"])) {
-    addAnonymousUser();
 }
 
 // Redirect
