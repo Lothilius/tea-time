@@ -29,7 +29,7 @@ function checkLogin() {
 
     $connection = connectMySql();
 
-    $result = $connection->query("SELECT userId, password FROM Users WHERE email = '$email'");
+    $result = $connection->query("SELECT user_Id, password FROM Users WHERE email = '$email'");
 
     $row = $result->fetch_assoc();
     $result->free();
@@ -37,7 +37,7 @@ function checkLogin() {
     $success = (crypt($pass, $row['password']) == $row['password']);
 
     if ($success) {
-        $_SESSION["userId"] = $row['userId'];
+        $_SESSION["user_Id"] = $row['user_Id'];
         // Create the cookie and set it to expire in a week
         setcookie("firstTime", "1", time() + (3600 * 24 * 7), "/");
     }
@@ -58,7 +58,7 @@ function addUser() {
 
     $connection = connectMySql();
 
-    $result = $connection->query("SELECT userId, anonymous
+    $result = $connection->query("SELECT user_Id, anonymous
                                   FROM Users
                                   WHERE email='$email'");
     $row = $result->fetch_assoc();
@@ -68,14 +68,14 @@ function addUser() {
 			$connection->query("UPDATE Users
 								SET street = '$street', city = '$city', state = '$state', zip = '$zip', password = '$pass1', anonymous = 0
 								WHERE email = '$email'");
-			$_SESSION["userId"] = $row['userId'];
+			$_SESSION["user_Id"] = $row['user_Id'];
 			$result->free();
 	}
 	 else{
 		$connection->query("INSERT INTO Users (email, password, street, city, state, zip)
 						    VALUES ('$email', '$pass1', '$street', '$city', '$state', '$zip')");
 
-		$_SESSION["userId"] = $connection->insert_id;
+		$_SESSION["user_Id"] = $connection->insert_id;
 	}
 
     // Create the cookie and set it to expire in a week
@@ -89,7 +89,7 @@ function addAnonymousUser() {
 
     $connection->query("INSERT INTO Users (anonymous) VALUES(TRUE);");
 
-    $_SESSION["userId"] = $connection->insert_id;
+    $_SESSION["user_Id"] = $connection->insert_id;
     // Create the cookie and set it to expire in a week
     setcookie("firstTime", "0", time() + (3600 * 24 * 7), "/");
 

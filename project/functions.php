@@ -42,7 +42,7 @@ function createHeader($cssFiles, $javascriptFiles) {
             <!-- TODO Include list of compliments -->
             <li><a href="description.php">Hi Beautiful! How are you?</a></li>';
 
-	if(isset($_SESSION['userId']) && $_SESSION['userId'] != 0){
+	if(isset($_SESSION['user_Id']) && $_SESSION['user_Id'] != 0){
         echo '<li class="dropBar"><div class="welcomeBar">' . $welcomeMessage . '<img src="images/down_arrow.png" /></div>
             <ul class="dropOut">
                 <li><a href="view_entries.php">View Journal Entries</a></li>
@@ -121,12 +121,12 @@ function getPassword($column, $value)
 
 //Returns if user is anonymous based on session Id. Returns true or false
 function isCurrentUserAnonymous($connection) {
-	if(!isset($_SESSION['userId']) || $_SESSION['userId'] == 0 ) {
+	if(!isset($_SESSION['user_Id']) || $_SESSION['user_Id'] == 0 ) {
         return true;
     }
 
-    $userId = $_SESSION['userId'];
-    $result = $connection->query("SELECT anonymous FROM Users where userId='$userId'");
+    $user_Id = $_SESSION['user_Id'];
+    $result = $connection->query("SELECT anonymous FROM Users where user_Id='$user_Id'");
     $anonymous = $result->fetch_assoc();
     $anonymous = $anonymous['anonymous'];
     $result->free();

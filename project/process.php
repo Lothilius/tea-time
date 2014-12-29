@@ -6,7 +6,7 @@ include_once 'functions.php';
 require 'lib/vendor/autoload.php';
 use Mailgun\Mailgun;
 
-if (!isset($_SESSION['userId']) || $_SESSION['userId'] == 0) {
+if (!isset($_SESSION['user_Id']) || $_SESSION['user_Id'] == 0) {
     header("Location: index.php");
 }
 
@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
 }
 
 // Create the idHashes
-$creatorIdHash = md5($meetingId . $_SESSION['userId']);
+$creatorIdHash = md5($meetingId . $_SESSION['user_Id']);
 $mateIdHash = md5($meetingId . $mateUserId);
 
 // Create entries in MeetingUsers table

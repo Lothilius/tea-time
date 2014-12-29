@@ -1,7 +1,7 @@
 <?php
 
 
-if (isset($_SESSION['userId']) && $_SESSION['userId'] != 0) {
+if (isset($_SESSION['user_Id']) && $_SESSION['user_Id'] != 0) {
     header("Location: " . $_POST["redirectUrl"]);
 }
 

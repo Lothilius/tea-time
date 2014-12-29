@@ -13,7 +13,7 @@ if (isset($_POST['search'])) {
               INNER JOIN Meetings AS m
               ON m.meetingId=mu.meetingId
               INNER JOIN Users AS u
-              ON mu.userId=u.UserId
+              ON mu.user_Id=u.UserId
               WHERE u.email='" . $_POST['email'] . "' AND mu.confirmed=FALSE";
 
     if (isset($_POST['meetingId']) && $_POST['meetingId'] != "") {

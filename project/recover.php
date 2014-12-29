@@ -64,12 +64,12 @@ function confirm(){
 							WHERE email = '$email'");
 		$connection->query("DELETE FROM ForgottenPassword
 							WHERE hash='$hash'");
-        $result = $connection->query("SELECT userId
+        $result = $connection->query("SELECT user_Id
                                       FROM Users
                                       WHERE email='$email'");
 
         $row = $result->fetch_assoc();
-        $_SESSION['userId'] = $row['userId'];
+        $_SESSION['user_Id'] = $row['user_Id'];
 
         createHeader(array("style.css"), array());
 		echo '<h2>Your password has been reset. Happy Treffing!</h2>';

@@ -24,12 +24,12 @@ $addresses = array();
 
 $connect = connectMySql();
 
-$result = $connect->query("SELECT userId, meetingId FROM MeetingUsers WHERE idHash='" . $formData['idHash'] . "'");
+$result = $connect->query("SELECT user_Id, meetingId FROM MeetingUsers WHERE idHash='" . $formData['idHash'] . "'");
 
 if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();
 
-    $mateUserId = $row['userId'];
+    $mateUserId = $row['user_Id'];
     $meetingId = $row['meetingId'];
 
     $result->free();
@@ -61,7 +61,7 @@ if($result) {
 $result = $connect->query("SELECT u.email, mu.idHash, mu.startingStreet, mu.startingCity, mu.startingState, mu.startingZip, mu.startingCountry
                            FROM MeetingUsers AS mu
                            INNER JOIN Users AS u
-                           ON mu.userId = u.userId
+                           ON mu.user_Id = u.user_Id
                            WHERE meetingId=$meetingId");
 
 $index = 0;

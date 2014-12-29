@@ -14,7 +14,7 @@ createHeader(array("style.css"), array(getGoogleMapsJSFilePath(), "validate.js",
 
 $connect = connectMySql();
 
-$result = $connect->query("SELECT * FROM Users WHERE userId=" . $_SESSION["userId"]);
+$result = $connect->query("SELECT * FROM Users WHERE user_Id=" . $_SESSION["user_Id"]);
 
 $row = $result->fetch_assoc();
 
