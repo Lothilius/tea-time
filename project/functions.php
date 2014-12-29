@@ -1,5 +1,7 @@
 <?php
 
+include_once 'authentication.php';
+
 function getGoogleMapsJSFilePath() {
     return "https://maps.googleapis.com/maps/api/js?key=AIzaSyDzzYC0JTMf2UPapIJXkNbv9NEobpCBfPQ&sensor=true";
 }
@@ -73,24 +75,6 @@ function regularScript()
 	        </script>';
 }
 
-//Please enter MySQL connection HERE.
-function connectMySql(){
-    $host = "Localhost";
-    $user = "db_tea-user";
-    $pwd = "6%43z_fDs6fr4";
-    $dbs = "dbotea";
-    $port = "3306";
-
-    $connect = new mysqli($host, $user, $pwd, $dbs, $port);
-
-    // Check connection
-    if (mysqli_connect_errno())
-    {
-        die("Failed to connect to MySQL: " . mysqli_connect_error());
-    }
-
-    return $connect;
-}
 
 //Sanatize request
 function clean($value)
