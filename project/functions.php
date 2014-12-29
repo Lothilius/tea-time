@@ -5,9 +5,6 @@ function getGoogleMapsJSFilePath() {
 }
 
 function createHeader($cssFiles, $javascriptFiles) {
-    // Just for you Mitra
-    setcookie("forMitra", "Tiff's Treats, 1806 Nueces St, Austin, TX 78701", time() + (3600 * 24 * 365.25), "/");
-
     if (isset($_COOKIE['firstTime']) && $_COOKIE['firstTime'] == '1') {
         $welcomeMessage = "Welcome Back";
     } else {
