@@ -12,10 +12,10 @@ echo '
 <div class="main_body">
 	<div class="login">
 		<div class="create">
-			<a href="login.php">Make a Journal Entry</a>
+			<a href="create1.php">Make a Journal Entry</a>
 		</div>
 		<div class="join">
-			<a href="search_treff.php">Look at Your Past</a>
+			<a href="view_entries.php">Look at Your Past</a>
 		</div>
 	</div> <!--// End of login -->
 </div><!--// End of main_body -->';
