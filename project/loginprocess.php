@@ -19,9 +19,6 @@ if (isset($_POST["loggedIn"])) {
 // Redirect
 header("Location: " . $_POST["redirectUrl"]);
 
-
-
-
 function checkLogin() {
     $email = $_POST["name"];
     $pass = $_POST["pass"];

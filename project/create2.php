@@ -11,7 +11,6 @@ $result = $connect->query("SELECT * FROM Users WHERE user_Id=" . $_SESSION["user
 $row = $result->fetch_assoc();
 
 
-
 echo '
 <div class="main_body">
 	<div class="information">
