@@ -2,15 +2,7 @@
 session_start();
 include_once 'functions.php';
 
-$js_script = "require(['dijit/form/Textarea', 'dojo/domReady!'], function(Textarea){
-    var textarea = new Textarea({
-        name: 'description',
-        value: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
-        style: 'width: 300px; height: 100px;'
-    }, 'myarea').startup();
-});";
-createHeader(array("style.css"), array(getGoogleMapsJSFilePath(), "validate.js","//ajax.googleapis.com/ajax/libs/dojo/1.10.3/dojo/dojo.js", $js_script));
-
+createHeader(array("style.css"), array(getGoogleMapsJSFilePath(), "validate.js","//ajax.googleapis.com/ajax/libs/dojo/1.10.3/dojo/dojo.js"));
 
 $connect = connectMySql();
 
