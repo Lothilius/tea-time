@@ -85,7 +85,7 @@ function clean($value)
 //Send to error page
 function errorPage()
 {
-    header('Location: http://project/error.php');
+    header('Location: /error.php');
 }
 
 //Get the name of the Treff
