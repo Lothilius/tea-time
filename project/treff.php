@@ -2,7 +2,7 @@
 
 session_start();
 
-$id = $_GET['idHash'];
+$entry_Id = $_GET['entry_Id'];
 include_once 'functions.php';
 
 createHeader(array("style.css"), array(getGoogleMapsJSFilePath(), 'treff_map_functions.js'));
