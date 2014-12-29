@@ -5,7 +5,7 @@ session_start();
 $entry_Id = $_GET['entry_Id'];
 include_once 'functions.php';
 
-createHeader(array("style.css"), array(getGoogleMapsJSFilePath(), 'treff_map_functions.js'));
+createHeader(array("style.css"), array());
 
 $connection = connectMySql();
 //var_dump("SELECT meetingId, userId, startingStreet, startingCity, startingState, startingZip, startingCountry FROM MeetingUsers WHERE idHash='$id'");
@@ -53,11 +53,6 @@ echo '
                     <th>Reminder</th>
                 </tr>';
 
-$result = $connection->query("SELECT Users.email, (MeetingUsers.startingStreet IS NOT NULL AND MeetingUsers.startingCity IS NOT NULL AND MeetingUsers.startingState IS NOT NULL AND MeetingUsers.startingZip IS NOT NULL AND MeetingUsers.startingCountry IS NOT NULL) AS hasConfirmed
-                              FROM MeetingUsers
-                              INNER JOIN Users
-                              ON Users.userId = MeetingUsers.userId
-                              WHERE MeetingUsers.meetingID=$meetingId");
 
 while($row = $result->fetch_assoc()) {
     echo '<tr>
@@ -75,18 +70,8 @@ while($row = $result->fetch_assoc()) {
 
 $result->free();
 
-echo '      </table>
-        </div>';
-
-if ($status == 'Ready') {
-    echo '
-        <button type="button" onclick="getDirections(\'' . $startingAddress . '\', \'' . $midpointAddress . '\');"><h1>Get Directions</h1></button>
-        <div id="directions-panel"></div>';
-}
-
-echo '
+echo $description .'
 	</div>
-    <div id="map-canvas"></div>
 </div>';
 
 $connection->close();
