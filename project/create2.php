@@ -19,10 +19,10 @@ echo '
 		<form id="entry_form" action="process.php" method="POST" onsubmit="return validateTreff();">
 			<table>
                 <tr>
-					<td><input type="text" name="Title" maxlength="50" placeholder="Journal Title"/></td>
+					<td><input type="text" name="title" maxlength="50" placeholder="Journal Title"/></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="Subject" maxlength="50" size="37" placeholder="Subject"/></td>
+					<td><input type="text" name="subject" maxlength="50" size="37" placeholder="Subject"/></td>
 				</tr>
 				<tr>
 					<td>
