@@ -26,6 +26,7 @@ function createHeader($cssFiles, $javascriptFiles) {
     foreach ($javascriptFiles as $file) {
         echo '<script type ="text/javascript" src = "' . $file . '"></script>';
     }
+    echo regularScript();
 
     echo '
     </head>
@@ -58,6 +59,18 @@ function createHeader($cssFiles, $javascriptFiles) {
         
 	echo '</ul>
     </nav>';
+}
+
+function regularScript()
+{
+    return '<script>
+            require(["dijit/form/Textarea", "dojo/domReady!"], function(Textarea){
+            var textarea = new Textarea({
+                name: "Description",
+                style: "width:300px; height:100px;",
+                placeholder: "...was it a good day?"
+                }, "myarea").startup();});
+	        </script>';
 }
 
 //Please enter MySQL connection HERE.
